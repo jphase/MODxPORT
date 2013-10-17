@@ -55,10 +55,10 @@
 		}
 		// Loop through all our inserted posts and setup our parent/child relationships
 		$wp_content = $wp->get_results("SELECT * FROM `$wp_db_table` WHERE `ID` IN (" . implode(',', $ids) . ")");
-		// die("SELECT * FROM `$wp_db_table` WHERE `ID` IN (" . implode(',', $ids) . ")");
 		if(is_array($wp_content) && count($wp_content)) {
 			foreach($wp_content as $w) {
 				if(in_array($w->ID, $ids)) {
+					// Update the parent
 					$wp->query("UPDATE `$wp_db_table` SET `post_parent` = " . $parents[$w->ID] . " WHERE `ID` = " . $w->ID);
 					// Debug message
 					echo "Updated parent to " . $parents[$w->ID] . " on post ID {$w->ID}<br>";
