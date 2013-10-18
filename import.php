@@ -41,7 +41,7 @@
 				'post_date_gmt'  => date('Y-m-d H:i:s', strftime($c->createdon)),
 				'post_name'      => $c->alias,
 				'post_status'    => 'publish',
-				'post_title'     => $c->longtitle,
+				'post_title'     => $c->pagetitle,
 				'post_type'      => $wp_import_type
 			);
 			// Insert our post
